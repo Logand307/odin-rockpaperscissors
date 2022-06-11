@@ -36,18 +36,31 @@ function compare(a, b) {
 //initiate round
 
 function playRound(playerSelection, computerSelection) {
-  // your code here!
   let result = compare(playerSelection, computerSelection);
   if (result === 0) {
-    return "It is a Tie!";
+    return `It's a Tie! You both played ${playerSelection}`;
   } else if (result === 1) {
-    return "You Win!";
-  } else return "You Lose!";
+    return `You Win! ${playerSelection} beats ${computerSelection}`;
+  } else return `You Lose! ${computerSelection} beats ${playerSelection}`;
 }
 
 const playerSelection = playerChoice();
 const computerSelection = computerPlay();
 
-console.log(playRound(playerSelection, computerSelection));
+//loop through 5 total rounds of play
 
-playRound();
+function game() {
+  let player = playerChoice();
+  for (i = 0; i < 5; i++) {
+    if (player !== "rock" && player !== "paper" && player !== "scissors") {
+      console.log("Invalid choice, enter Rock, Paper, or Scissors only!");
+      i--;
+    } else {
+      let result = playRound(playerChoice(), computerPlay());
+      console.log(result);
+      alert(result);
+    }
+  }
+}
+
+game();
