@@ -50,12 +50,12 @@ function compareChoices(a, b) {
 //initiate round
 
 function playRound(player, computer) {
-  let result = compareChoices(player, computer);
-  if (result === 0) {
+  let roundResult = compareChoices(player, computer);
+  if (roundResult === 0) {
     return `It's a Tie! You both played ${player}`;
-  } else if (result === 1) {
+  } else if (roundResult === 1) {
     return `You Win! ${player} beats ${computer}`;
-  } else if (result === -1) {
+  } else if (roundResult === -1) {
     return `You lose! ${computer} beats ${player}`;
   }
 }
@@ -64,9 +64,9 @@ function playRound(player, computer) {
 
 function game() {
   for (i = 0; i < 5; i++) {
-    let result = playRound(playerChoice(), computerChoice());
-    alert(result);
-    console.log(result);
+    let gameResult = playRound(playerChoice(), computerChoice());
+    alert(gameResult);
+    console.log(gameResult);
   }
 }
 
