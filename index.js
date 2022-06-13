@@ -1,7 +1,7 @@
 //generate automated input
 
 function computerChoice() {
-  //initialize array of possible answers
+  //array of possible answers
 
   let answer = [`Rock`, `Paper`, `Scissors`];
 
@@ -9,7 +9,6 @@ function computerChoice() {
 
   const randomAnswer =
     answer[Math.floor(Math.random() * answer.length)].toLowerCase();
-  console.log(randomAnswer);
   return randomAnswer;
 }
 
@@ -17,6 +16,8 @@ function computerChoice() {
 
 function playerChoice() {
   const playerPrompt = prompt("Rock, Paper, or Scissors?").toLowerCase();
+
+  //validate input
   if (
     playerPrompt !== "rock" &&
     playerPrompt !== "paper" &&
@@ -25,7 +26,6 @@ function playerChoice() {
     alert("Invalid choice, enter Rock, Paper, or Scissors only!");
     playerChoice();
   }
-  console.log(playerPrompt);
   return playerPrompt;
 }
 
