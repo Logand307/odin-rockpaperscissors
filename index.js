@@ -12,6 +12,10 @@ function computerPlay() {
 
 function playerChoice() {
   const ask = prompt("Rock, Paper, or Scissors?").toLowerCase();
+  if (ask !== "rock" && ask !== "paper" && ask !== "scissors") {
+    alert("Invalid choice, enter Rock, Paper, or Scissors only!");
+    playerChoice();
+  }
   return ask;
 }
 
@@ -41,25 +45,15 @@ function playRound(playerSelection, computerSelection) {
     return `It's a Tie! You both played ${playerSelection}`;
   } else if (result === 1) {
     return `You Win! ${playerSelection} beats ${computerSelection}`;
-  } else return `You Lose! ${computerSelection} beats ${playerSelection}`;
+  } else return `Computer wins! ${computerSelection} beats ${playerSelection}`;
 }
 
-const playerSelection = playerChoice();
-const computerSelection = computerPlay();
-
 //loop through 5 total rounds of play
-
 function game() {
-  let player = playerChoice();
   for (i = 0; i < 5; i++) {
-    if (player !== "rock" && player !== "paper" && player !== "scissors") {
-      console.log("Invalid choice, enter Rock, Paper, or Scissors only!");
-      i--;
-    } else {
-      let result = playRound(playerChoice(), computerPlay());
-      console.log(result);
-      alert(result);
-    }
+    let result = playRound(playerChoice(), computerPlay());
+    alert(result);
+    console.log(result);
   }
 }
 
