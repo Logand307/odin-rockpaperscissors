@@ -25,19 +25,12 @@
 
       //collect user input on DOM
 
-      const rockBtn = document.querySelector("#rock");
-      rockBtn.addEventListener("click", () => {
-        console.log(playRound("rock", computerChoice()));
-      });
+      const buttons = document.querySelectorAll("button");
 
-      const scissorsBtn = document.querySelector("#scissors");
-      scissorsBtn.addEventListener("click", () => {
-        console.log(playRound("scissors", computerChoice()));
-      });
-
-      const paperBtn = document.querySelector("#paper");
-      paperBtn.addEventListener("click", () => {
-        console.log(playRound("paper", computerChoice()));
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          console.log(playRound(button.id, computerChoice()));
+        });
       });
 
       //set conditions
