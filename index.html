@@ -5,42 +5,23 @@
     <title>Page Title</title>
   </head>
   <body>
-    <div id="container">
+    <div id="buttonContainer">
       <button id="rock">Rock</button>
       <button id="paper">Paper</button>
       <button id="scissors">Scissors</button>
     </div>
+
+    <div id="outputContainer"></div>
     <script>
       //generate automated input
 
       function computerChoice() {
-        //array of possible answers
-
         let answer = [`Rock`, `Paper`, `Scissors`];
-
-        //returning random number between 0 and 2
 
         const randomAnswer =
           answer[Math.floor(Math.random() * answer.length)].toLowerCase();
         return randomAnswer;
       }
-
-      //collect user input
-
-      // function playerChoice() {
-      //   const playerPrompt = prompt("Rock, Paper, or Scissors?").toLowerCase();
-
-      //   //validate input
-      //   if (
-      //     playerPrompt !== "rock" &&
-      //     playerPrompt !== "paper" &&
-      //     playerPrompt !== "scissors"
-      //   ) {
-      //     alert("Invalid choice, enter Rock, Paper, or Scissors only!");
-      //     playerChoice();
-      //   }
-      //   return playerPrompt;
-      // }
 
       //collect user input on DOM
 
@@ -61,45 +42,37 @@
 
       //set conditions
 
-      function compareChoices(a, b) {
-        if (a === "rock") {
-          if (b === "scissors") return 1;
-          else if (b === "paper") return -1;
+      function compareChoices(player, computer) {
+        if (player === "rock") {
+          if (computer === "scissors") return 1;
+          else if (computer === "paper") return -1;
           else return 0;
-        } else if (a === "paper") {
-          if (b === "scissors") return -1;
-          else if (b === "rock") return 1;
+        } else if (player === "paper") {
+          if (computer === "scissors") return -1;
+          else if (computer === "rock") return 1;
           else return 0;
-        } else if (a === "scissors") {
-          if (b === "rock") return -1;
-          else if (b === "paper") return 1;
+        } else if (player === "scissors") {
+          if (computer === "rock") return -1;
+          else if (computer === "paper") return 1;
           else return 0;
         }
       }
 
-      //initiate round
+      //initiate round and output result to DOM
 
       function playRound(player, computer) {
+        const container = document.querySelector("#outputContainer");
+        const content = document.createElement("div");
         let roundResult = compareChoices(player, computer);
         if (roundResult === 0) {
-          return `It's a Tie! You both played ${player}`;
+          content.textContent = `It's a Tie! You both played ${player}`;
         } else if (roundResult === 1) {
-          return `You Win! ${player} beats ${computer}`;
+          content.textContent = `You Win! ${player} beats ${computer}`;
         } else if (roundResult === -1) {
-          return `You lose! ${computer} beats ${player}`;
+          content.textContent = `You lose! ${computer} beats ${player}`;
         }
+        container.appendChild(content);
       }
-
-      //loop through 5 total rounds of play
-
-      // function game() {
-      //   for (i = 0; i < 5; i++) {
-      //     let gameResult = playRound(playerChoice(), computerChoice());
-      //     alert(gameResult);
-      //     console.log(gameResult);
-      //   }
-      // }
-      // game();
     </script>
   </body>
 </html>
