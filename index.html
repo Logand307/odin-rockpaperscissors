@@ -30,9 +30,9 @@
         button.addEventListener("click", () => {
           playRound(button.id, computerChoice());
           clickCount += 1;
-          if (clickCount > 4) {
+          if (clickCount > 5) {
             button.disabled = true;
-            alert("Game over!!!");
+            alert("Game over!");
           }
         });
       });
@@ -57,16 +57,21 @@
 
       //initiate round and output result to DOM
 
+      let playerScore = 0;
+      let computerScore = 0;
+
       function playRound(player, computer) {
         const container = document.querySelector("#outputContainer");
         const content = document.createElement("div");
         const roundResult = compareChoices(player, computer);
         if (roundResult === 0) {
-          content.textContent = `It's a Tie! You both played ${player}`;
+          content.textContent = `It's a Tie! You both played ${player}. (Player: ${playerScore} Computer: ${computerScore})`;
         } else if (roundResult === 1) {
-          content.textContent = `You Win! ${player} beats ${computer}`;
+          playerScore++;
+          content.textContent = `You Win! ${player} beats ${computer}. (Player: ${playerScore} Computer: ${computerScore})`;
         } else if (roundResult === -1) {
-          content.textContent = `You lose! ${computer} beats ${player}`;
+          computerScore++;
+          content.textContent = `You lose! ${computer} beats ${player}. (Player: ${playerScore} Computer: ${computerScore})`;
         }
 
         container.appendChild(content);
