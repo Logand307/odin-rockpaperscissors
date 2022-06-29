@@ -26,10 +26,9 @@
       //collect user input on DOM
 
       const buttons = document.querySelectorAll("button");
-
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
-          console.log(playRound(button.id, computerChoice()));
+          return playRound(button.id, computerChoice());
         });
       });
 
@@ -66,6 +65,24 @@
         }
         container.appendChild(content);
       }
+
+      function keepScore(player, computer) {
+        let playerScore = 0;
+        let computerScore = 0;
+        let roundResult = compareChoices(player, computer);
+        for (i = 0; i < 5; i++) {
+          console.log("entered loop");
+          if (roundResult === 1) {
+            playerScore++;
+          } else if (roundResult === -1) {
+            computerScore++;
+          }
+        }
+        console.log(playerScore);
+        console.log(computerScore);
+      }
+
+      keepScore();
     </script>
   </body>
 </html>
