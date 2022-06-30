@@ -25,14 +25,9 @@
       //collect user input on DOM, control game
 
       const buttons = document.querySelectorAll("button");
-      let clickCount = 0;
       buttons.forEach((button) => {
         button.addEventListener("click", () => {
           playRound(button.id, computerChoice());
-          clickCount += 1;
-          if (clickCount > 4) {
-            buttonContainer.style.visibility = "hidden";
-          }
         });
       });
 
@@ -72,7 +67,13 @@
           computerScore++;
           content.textContent = `You lose! ${computer} beats ${player}. (Player: ${playerScore} Computer: ${computerScore})`;
         }
-
+        if (playerScore === 5) {
+          content.textContent = `You are first to 5! You win!`;
+          buttonContainer.style.visibility = "hidden";
+        } else if (computerScore === 5) {
+          content.textContent = `Computer was first to 5. You lose :(`;
+          buttonContainer.style.visibility = "hidden";
+        }
         container.appendChild(content);
       }
     </script>
