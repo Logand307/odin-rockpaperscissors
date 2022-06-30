@@ -30,9 +30,8 @@
         button.addEventListener("click", () => {
           playRound(button.id, computerChoice());
           clickCount += 1;
-          if (clickCount > 5) {
-            button.disabled = true;
-            alert("Game over!");
+          if (clickCount > 4) {
+            buttonContainer.style.visibility = "hidden";
           }
         });
       });
